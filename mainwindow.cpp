@@ -131,7 +131,12 @@ void MainWindow::on_action_Open_Folder_triggered()
     ui->widget->setVisible(true);
 }
 
-
+/**
+ * @brief merge_sort
+ * @param data
+ * @return
+ * Function to sort out the images processing each one
+ */
 vector<int> merge_sort(vector<int> &data){
     if (data.size() <= 1) {
         return data;
@@ -185,6 +190,12 @@ vector<int> merge_sort(vector<int> &data){
 void MainWindow::imageProcess(QString hex){
 
 }
+/**
+ * @brief MainWindow::hexToBGR
+ * @param color
+ * @return The vector of the BGR color as a Vec3b
+ *
+ */
 Vec3b MainWindow::hexToBGR(QString color){
     Vec3b Fcolor;//Final color
 
