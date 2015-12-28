@@ -32,3 +32,6 @@ LIBS += -lopencv_calib3d
 LIBS += -lopencv_objdetect
 LIBS += -lopencv_flann
 LIBS += -lopencv_imgcodecs
+
+DISTFILES += \
+    README.md
