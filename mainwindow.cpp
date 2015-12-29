@@ -157,7 +157,7 @@ vector<int> merge_sort(vector<int> &data){
     return result;
 }
 
-/*void MainWindow::Vec3b setColor(QString color){
+Vec3b MainWindow::setColor(QString color){
     Vec3b ret;
     unsigned int x;
     unsigned char y;
@@ -167,7 +167,7 @@ vector<int> merge_sort(vector<int> &data){
     if(color.size()==6){
        //cout<<color.substr(0,2);
         for (int i = 0; i < 3; ++i) {
-            ss<<hex<< color.substr(i*2,2);
+            //ss<<hex<< color.substr(i*2,2);
             ss>>x;
             ss>>y;
 
@@ -186,7 +186,7 @@ vector<int> merge_sort(vector<int> &data){
         printf("Input color in wrong format!\n");
         //return NULL;
     }
-}*/
+}
 void MainWindow::imageProcess(QString hex){
 
 }
@@ -219,8 +219,8 @@ Vec3b MainWindow::hexToBGR(QString color){
         for (int i = 0; i < 3; ++i) {
             str.clear();
             if(color.at(2*i)<='f'&& color.at(1+2*i)<='f'){
-                str.append(1u,color.at(2*i));
-                str.append(1u,color.at(1+2*i));
+               /* str.append(1u,color.at(2*i));
+                str.append(1u,color.at(1+2*i));*/
             }else{
                 return Fcolor;
             }
@@ -267,7 +267,7 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::analyze(Vec3b color){
     std::list<imageData*>::iterator iterator;
-    cout<<color[0]<<" "color[1]<<" "color[2]<<endl;
+    cout<<color[0]<<" "<<color[1]<<" "<<color[2]<<endl;
     for (iterator = imageList.begin(); iterator != imageList.end(); ++iterator) {
         //(*iterator)->value=
     }
