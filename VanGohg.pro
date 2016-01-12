@@ -13,10 +13,12 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    hexstring.cpp
 
 HEADERS  += \
-    mainwindow.hpp
+    mainwindow.hpp \
+    hexstring.h
 
 FORMS    += mainwindow.ui
 

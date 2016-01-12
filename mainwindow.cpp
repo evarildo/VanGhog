@@ -213,8 +213,10 @@ Vec3b MainWindow::hexToBGR(QString color){
             QTextStream ss;
             ss<<str;
             ss >> hex >> val;
+            cout << str;
             Fcolor[2-i]=val;
         }
+        cout << endl;
     }else if(length==6){
         for (int i = 0; i < 3; ++i) {
             str.clear();
@@ -230,9 +232,8 @@ Vec3b MainWindow::hexToBGR(QString color){
             ss >> hex >> val;
             Fcolor[2-i]=val;
         }
-    }else{
-        return Fcolor;
     }
+    return Fcolor;
 }
 
 /**
@@ -266,11 +267,11 @@ void MainWindow::on_pushButton_clicked()
 }
 
 void MainWindow::analyze(Vec3b color){
-    std::list<imageData*>::iterator iterator;
+   /* std::list<imageData*>::iterator iterator;
     cout<<color[0]<<" "<<color[1]<<" "<<color[2]<<endl;
     for (iterator = imageList.begin(); iterator != imageList.end(); ++iterator) {
         //(*iterator)->value=
-    }
+    }*/
 }
 
 void MainWindow::on_textEdit_textChanged()
