@@ -1,7 +1,22 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "hexstring.hpp"
+#include "imageproc.hpp"
+
 #include <QMainWindow>
+#include <QDebug>
+#include <string>
+#include <QtGui>
+#include <QPixmap>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QButtonGroup>
+#include <QGridLayout>
+#include <QScrollArea>
+#include <QTextEdit>
+#include <QAbstractButton>
+
 #include <QFileDialog>
 #include <iostream>
 #include <vector>
@@ -18,6 +33,7 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
+
 
 using namespace std;
 using namespace cv;
@@ -50,16 +66,11 @@ private slots:
 
     void on_pushButton_clicked();
 
-
     void on_textEdit_textChanged();
 
     void swapWidgets(QWidget *widgetA, QWidget *widgetB);
 
-    void imageProcess(QString hex);
-
     void analyze(Vec3b color);
-
-    Vec3b hexToBGR(QString color);
 
     Vec3b setColor(QString color);
 private:

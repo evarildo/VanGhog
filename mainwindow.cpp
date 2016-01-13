@@ -1,17 +1,6 @@
 
 #include "mainwindow.hpp"
 #include "ui_mainwindow.h"
-#include <QDebug>
-#include <string>
-#include <QtGui>
-#include <QPixmap>
-#include <QHBoxLayout>
-#include <QLabel>
-#include <QButtonGroup>
-#include <QGridLayout>
-#include <QScrollArea>
-#include <QTextEdit>
-#include <QAbstractButton>
 
 #define COLUMNS 4
 
@@ -156,7 +145,11 @@ vector<int> merge_sort(vector<int> &data){
 
     return result;
 }
-
+/**
+ * @brief MainWindow::setColor
+ * @param color
+ * @return
+ */
 Vec3b MainWindow::setColor(QString color){
     Vec3b ret;
     unsigned int x;
@@ -187,58 +180,11 @@ Vec3b MainWindow::setColor(QString color){
         //return NULL;
     }
 }
-void MainWindow::imageProcess(QString hex){
 
-}
-/**
- * @brief MainWindow::hexToBGR
- * @param color
- * @return The vector of the BGR color as a Vec3b
- *
- */
-Vec3b MainWindow::hexToBGR(QString color){
-    Vec3b Fcolor;//Final color
-
-    int length=color.length();
-    QString str;
-    if(length==3){
-        for (int i = 0; i < 3; ++i){
-            str.clear();
-            if(color.at(i)<='f'){
-                str.append(color.at(i)).append(color.at(i));
-            }else{
-                return Fcolor;
-            }
-            int val;
-            QTextStream ss;
-            ss<<str;
-            ss >> hex >> val;
-            cout << str;
-            Fcolor[2-i]=val;
-        }
-        cout << endl;
-    }else if(length==6){
-        for (int i = 0; i < 3; ++i) {
-            str.clear();
-            if(color.at(2*i)<='f'&& color.at(1+2*i)<='f'){
-               /* str.append(1u,color.at(2*i));
-                str.append(1u,color.at(1+2*i));*/
-            }else{
-                return Fcolor;
-            }
-            int val;
-            QTextStream ss;
-            ss<<str;
-            ss >> hex >> val;
-            Fcolor[2-i]=val;
-        }
-    }
-    return Fcolor;
-}
 
 /**
  * @brief MainWindow::on_pushButton_clicked
- *
+ * When the std
  */
 void MainWindow::on_pushButton_clicked()
 {
@@ -246,32 +192,35 @@ void MainWindow::on_pushButton_clicked()
     QString hex=ui->textEdit->toPlainText();
     qDebug()<<hex<<endl;
 
-    //CHECAR SE VALOR DE COR É VÁLIDO
-    ui->widget_2->setVisible(true);
+    if(isHex(hex)){//check if the color hex is valid
+        ui->widget_2->setVisible(true);
 
-    //ANALISA TODAS AS IMAGENS
-    analyze(hexToBGR(hex));
+        //analyze all images in the list
+        analyze(toVec3b(hex));
 
-    //ORDENA AS IMAGENS
+        //order images
 
-    std::list<imageData*>::iterator it=imageList.begin();
-    std::list<imageData*>::iterator it2=it++;
-    std::swap(*it,*it2);//swap structure item
-    swapWidgets((*it)->container,(*it2)->container);//swap images at the display
+        std::list<imageData*>::iterator it=imageList.begin();
+        std::list<imageData*>::iterator it2=it++;
+        std::swap(*it,*it2);//swap structure item
+        swapWidgets((*it)->container,(*it2)->container);//swap images at the display
 
 
-    std::list<imageData*>::iterator iterator;
-    for (iterator = imageList.begin(); iterator != imageList.end(); ++iterator) {
-        //qDebug() << (*iterator)->value;
+        std::list<imageData*>::iterator iterator;
+        for (iterator = imageList.begin(); iterator != imageList.end(); ++iterator) {
+            //qDebug() << (*iterator)->value;
+        }
+    } else{//if the color hex string is not valid
+
     }
 }
 
 void MainWindow::analyze(Vec3b color){
-   /* std::list<imageData*>::iterator iterator;
-    cout<<color[0]<<" "<<color[1]<<" "<<color[2]<<endl;
+    std::list<imageData*>::iterator iterator;
+    qDebug()<<color[0]<<" "<<color[1]<<" "<<color[2]<<endl;
     for (iterator = imageList.begin(); iterator != imageList.end(); ++iterator) {
-        //(*iterator)->value=
-    }*/
+        (*iterator)->value=imgProc(color,(*iterator)->img);
+    }
 }
 
 void MainWindow::on_textEdit_textChanged()

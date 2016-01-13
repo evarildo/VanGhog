@@ -13,12 +13,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    hexstring.cpp
+    mainwindow.cpp \
+    hexstring.cpp \
+    imageproc.cpp
 
 HEADERS  += \
     mainwindow.hpp \
-    hexstring.h
+    hexstring.hpp \
+    imageproc.hpp
 
 FORMS    += mainwindow.ui
 
