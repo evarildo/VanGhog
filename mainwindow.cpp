@@ -100,7 +100,7 @@ void MainWindow::on_action_Open_Folder_triggered()
 
                 img_disp=cvMatToQPixmap(img_orig);
 
-                imageData* tmp=new imageData(img_orig,new QLabel(),i);
+                imageData* tmp=new imageData(img_orig,new QLabel(),0);
 
                 tmp->container->setFixedSize(200,200);
                 ui->gridLayout->addWidget(tmp->container,(i/COLUMNS),i%COLUMNS);
