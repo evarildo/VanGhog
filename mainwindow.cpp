@@ -218,8 +218,13 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::analyze(Vec3b color){
     std::list<imageData*>::iterator iterator;
     qDebug()<<color[0]<<" "<<color[1]<<" "<<color[2]<<endl;
+    int i=0;
     for (iterator = imageList.begin(); iterator != imageList.end(); ++iterator) {
+        //qDebug()<<"AOOO";
         (*iterator)->value=imgProc(color,(*iterator)->img);
+
+        qDebug()<<(*iterator)->value;
+        //namedWindow("Display",WINDOW_AUTOSIZE);
     }
 }
 

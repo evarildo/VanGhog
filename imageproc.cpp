@@ -5,12 +5,17 @@ ImageProc::ImageProc()
 {
 
 }
-
-double imgProc(Vec3b color,Mat& img){
+/**
+ * @brief imgProc
+ * @param color
+ * @param img
+ * @return The number of percentage of the color in the image
+ */
+double imgProc(Vec3b color,const cv::Mat& img){
     int bins = 256;             // number of bins
-    float quant=0;                //quantity of pixels with that color
+    float quant=0;               //quantity of pixels with that color
     int nc = img.channels();    // number of channels
-    vector<Mat> hist(1);        // array for storing the histograms
+    //vector<Mat> hist(1);        // array for storing the histograms
     vector<Mat> canvas(1);      // images for displaying the histogram
     int hmax[3] = {0,0,0};      // peak value for each histogram
 
@@ -19,6 +24,7 @@ double imgProc(Vec3b color,Mat& img){
     Mat output (2*img.rows,img.cols,CV_8UC3, Scalar(0,0,0));
     for (int i = 0; i < hist.size(); i++)
         hist[i] = Mat::zeros(1, bins, CV_32SC1);
+
     for (int i = 0; i < img.rows; i++){
         for (int j = 0; j < img.cols; j++){
                 Vec3b intensity = img.at<Vec3b>(i,j);
@@ -38,15 +44,13 @@ double imgProc(Vec3b color,Mat& img){
                 if(dist>0){
                     quant+=(1-(dist/441.7));
                     int aux=(int)255*(1-(dist/441.7));
-                    if(aux>big)big=aux;
-                    if(aux<sml)sml=aux;
-                    /*Vec3b color2 (aux,aux,aux);
-                    output.at<Vec3b>(Point(j,img.rows+i))=color2;*/
                 }else if(dist==0){
                     sml=aux;
                     //Vec3b color2 (255,255,255);
                     quant=1;
                     //output.at<Vec3b>(Point(j,img.rows+i))=color2;
+                }else{
+                    qDebug()>>"Bad at the distance";
                 }
                 if(j==0&&i==0){
                     cout<<"\n\n--"<<intensity<<color<<dx<<"|"<<dy<<"|"<<dz<<"|"<<dist;

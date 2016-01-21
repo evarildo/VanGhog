@@ -3,6 +3,7 @@
 
 #include <math.h>
 #include <vector>
+#include <QDebug>
 #include <opencv2/core/matx.hpp>
 #include <opencv2/core.hpp>
 #include <opencv2/opencv.hpp>
@@ -19,5 +20,5 @@ class ImageProc
 public:
     ImageProc();
 };
-double imgProc(Vec3b color,Mat img);
+double imgProc(Vec3b color,const cv::Mat& img);
 #endif // IMAGEPROC_H
