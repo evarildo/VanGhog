@@ -28,29 +28,35 @@
 #include <list>
 #include <QImage>
 #include <QPixmap>
-#include <opencv2/core/matx.hpp>
-#include <opencv2/core.hpp>
+#include <opencv2/core/core.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
 
-using namespace std;
-using namespace cv;
 typedef struct imageData{
     double value;
     cv::Mat img;
     QLabel* container;
-    imageData(cv::Mat _img,QLabel* _cont, double _val):value(_val),img(_img),container(_cont)
-    {
 
+    /*!
+     * \brief imageData
+     * \param _img
+     * \param _cont
+     * \param _val
+     */
+    imageData(cv::Mat _img, QLabel* _cont, double _val) : value(_val), img(_img), container(_cont)
+    {
     }
 }imageData;
 
 namespace Ui {
-class MainWindow;
+    class MainWindow;
 }
 
+/*!
+ * \brief The MainWindow class
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -73,6 +79,7 @@ private slots:
     void analyze(Vec3b color);
 
     Vec3b setColor(QString color);
+
 private:
     Ui::MainWindow *ui;
     //cv::Mat image[300];

@@ -6,7 +6,7 @@
 #include <QLabel>
 
 /**
- * @brief main
+ * @brief The main function quere the program starts.
  * @param argc
  * @param argv
  * @return

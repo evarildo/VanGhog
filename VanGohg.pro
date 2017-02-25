@@ -12,17 +12,17 @@ TARGET = VanGohg
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-    mainwindow.cpp \
-    hexstring.cpp \
-    imageproc.cpp
+SOURCES += src/main.cpp\
+    src/mainwindow.cpp \
+    src/hexstring.cpp \
+    src/imageproc.cpp
 
 HEADERS  += \
-    mainwindow.hpp \
-    hexstring.hpp \
-    imageproc.hpp
+    src/mainwindow.hpp \
+    src/hexstring.hpp \
+    src/imageproc.hpp
 
-FORMS    += mainwindow.ui
+FORMS    += ui/mainwindow.ui
 
 INCLUDEPATH += /usr/local/include
 LIBS += -L/usr/local/lib
@@ -35,7 +35,6 @@ LIBS += -lopencv_features2d
 LIBS += -lopencv_calib3d
 LIBS += -lopencv_objdetect
 LIBS += -lopencv_flann
-LIBS += -lopencv_imgcodecs
 
 DISTFILES += \
     README.md

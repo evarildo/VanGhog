@@ -2,8 +2,8 @@
 
 HexString::HexString()
 {
-
 }
+
 /**
  * @brief isHex
  * @param color
@@ -21,6 +21,7 @@ bool isHex(QString color){
         return false;
     }
 }
+
 /**
  * @brief toVec3b
  * @param color The QString of hex color
